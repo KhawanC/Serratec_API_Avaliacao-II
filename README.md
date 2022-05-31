@@ -8,6 +8,8 @@ Projeto simples de API REST utilizando o framework Spring
 ## Script do banco de dados 
 
 ```bash
+create database comercio;
+
 CREATE TABLE public.fornecedor (
   id_fornecedor serial4 NOT NULL,
   cnpj int8 NOT NULL,
@@ -31,6 +33,7 @@ CREATE TABLE public.fornecedor (
 CREATE TABLE public.categoria (
   id_categoria serial4 NOT NULL,
   nome_categoria varchar(255),
+  imagem varchar,
   PRIMARY KEY (id_categoria)
 );
 
@@ -57,11 +60,16 @@ CREATE TABLE public.produto (
 
 ## Configurando a API para execução
 
-As credenciais para acesso ao banco de dados e o nome do contexto da API deverão ser alterados no arquivo application.properties
+As credenciais para acesso ao banco de dados, o nome do contexto da API, email e senha para envio de email e caminho para salvar dados deverão ser alterados no arquivo application.properties.
 
 ## Sobre
 
 - Author - [Alexandre Paixão]
+- Author - [Marina Portugal]
+- Author - [Pedro Henrique]
+- Author - [Ester Baltazar]
+- Author - [Sophia Araujo]
+- Author - [Kauã Cassiano]
 
 ## Licença
 

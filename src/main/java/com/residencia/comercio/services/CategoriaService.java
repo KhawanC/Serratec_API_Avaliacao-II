@@ -95,6 +95,7 @@ public class CategoriaService {
 		Categoria categoria = new Categoria();
 		
 		categoria.setIdCategoria(categoriaDTO.getIdCategoria());
+		categoria.setNomeCategoria(categoriaDTO.getNomeCategoria());
 		Categoria novoCategoria = categoriaRepository.save(categoria);
 		
 		return converterEntidadeParaDto(novoCategoria);

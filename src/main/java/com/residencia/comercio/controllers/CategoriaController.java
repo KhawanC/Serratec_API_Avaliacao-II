@@ -70,6 +70,7 @@ public class CategoriaController {
 	@PostMapping("/dto")
 	@Operation(summary = "Cadastrar categoria via DTO")
 	public ResponseEntity<CategoriaDTO> saveCategoriaDTO(@Valid @RequestBody CategoriaDTO categoriaDTO) {
+		System.out.println(categoriaDTO);
 		CategoriaDTO novoCategoriaDTO = categoriaService.saveCategoriaDTO(categoriaDTO);
 		return new ResponseEntity<>(novoCategoriaDTO, HttpStatus.CREATED);
 	}
