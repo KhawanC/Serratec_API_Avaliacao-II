@@ -5,7 +5,6 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -78,11 +77,11 @@ public class FornecedorController {
 		return new ResponseEntity<>("", HttpStatus.OK);
 	}
 	
-	// DTO
+	// DTO 
 	
 	@PostMapping("/dto")
-	@Operation(summary = "Salvar um fornecedor no padrão DTO")
-	public ResponseEntity<Fornecedor> saveFornecedorDTO(@RequestBody FornecedorDTO fornecedorDTO) {
+	@Operation(summary = "Salvar um fornecedor com o padrão DTO")
+	public ResponseEntity<Fornecedor> salvarFornecedorDTO(@RequestBody FornecedorDTO fornecedorDTO) {
 		Fornecedor fornecedor = fornecedorService.saveFornecedorDTO(fornecedorDTO);
 		return new ResponseEntity<>(fornecedor, HttpStatus.CREATED);
 	}

@@ -1,6 +1,6 @@
 package com.residencia.comercio.dtos;
 
-public class EnderecoDTO {
+public class CepDTO {
 
 	private String cep;
 	private String logradouro;
@@ -9,6 +9,9 @@ public class EnderecoDTO {
 	private String localidade;
 	private String uf;
 	private String ibge;
+	private String gia;
+	private String ddd;
+	private String siafi;
 
 	public String getCep() {
 		return cep;
@@ -66,10 +69,28 @@ public class EnderecoDTO {
 		this.ibge = ibge;
 	}
 
-	@Override
-	public String toString() {
-		return "EnderecoDTO [id_endereco=" + cep + ", logradouro=" + logradouro + ", complemento=" + complemento
-				+ ", bairro=" + bairro + ", localidade=" + localidade + ", uf=" + uf + ", ibge=" + ibge + "]";
+	public String getGia() {
+		return gia;
+	}
+
+	public void setGia(String gia) {
+		this.gia = gia;
+	}
+
+	public String getDdd() {
+		return ddd;
+	}
+
+	public void setDdd(String ddd) {
+		this.ddd = ddd;
+	}
+
+	public String getSiafi() {
+		return siafi;
+	}
+
+	public void setSiafi(String siafi) {
+		this.siafi = siafi;
 	}
 
 }

@@ -7,14 +7,10 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
-import com.fasterxml.jackson.annotation.JsonIdentityInfo;
 import com.fasterxml.jackson.annotation.JsonIgnore;
-import com.fasterxml.jackson.annotation.ObjectIdGenerators;
 
 @Entity
 @Table(name = "fornecedor")
@@ -51,6 +47,9 @@ public class Fornecedor {
 	@Column(name = "email")
 	private String email;
 
+	@Column(name = "telefone")
+	private String telefone;
+
 	@Column(name = "natureza_juridica")
 	private String naturezaJuridica;
 
@@ -63,9 +62,29 @@ public class Fornecedor {
 	@Column(name = "fantasia")
 	private String fantasia;
 
-	@ManyToOne
-	@JoinColumn(name = "id_endereco", referencedColumnName = "id_endereco")
-	private Endereco endereco;
+	@Column(name = "cep")
+	private String cep;
+
+	@Column(name = "logradouro")
+	private String logradouro;
+
+	@Column(name = "bairro")
+	private String bairro;
+
+	@Column(name = "localidade")
+	private String localidade;
+
+	@Column(name = "uf")
+	private String uf;
+
+	@Column(name = "ibge")
+	private String ibge;
+
+	@Column(name = "gia")
+	private String gia;
+
+	@Column(name = "ddd")
+	private String ddd;
 
 	@OneToMany(mappedBy = "fornecedor")
 	@JsonIgnore
@@ -77,6 +96,22 @@ public class Fornecedor {
 
 	public void setIdFornecedor(Integer idFornecedor) {
 		this.idFornecedor = idFornecedor;
+	}
+
+	public String getCnpj() {
+		return cnpj;
+	}
+
+	public void setCnpj(String cnpj) {
+		this.cnpj = cnpj;
+	}
+
+	public String getSituacao() {
+		return situacao;
+	}
+
+	public void setSituacao(String situacao) {
+		this.situacao = situacao;
 	}
 
 	public String getTipo() {
@@ -135,6 +170,14 @@ public class Fornecedor {
 		this.email = email;
 	}
 
+	public String getTelefone() {
+		return telefone;
+	}
+
+	public void setTelefone(String telefone) {
+		this.telefone = telefone;
+	}
+
 	public String getNaturezaJuridica() {
 		return naturezaJuridica;
 	}
@@ -167,12 +210,68 @@ public class Fornecedor {
 		this.fantasia = fantasia;
 	}
 
-	public Endereco getEndereco() {
-		return endereco;
+	public String getCep() {
+		return cep;
 	}
 
-	public void setEndereco(Endereco endereco) {
-		endereco = endereco;
+	public void setCep(String cep) {
+		this.cep = cep;
+	}
+
+	public String getLogradouro() {
+		return logradouro;
+	}
+
+	public void setLogradouro(String logradouro) {
+		this.logradouro = logradouro;
+	}
+
+	public String getBairro() {
+		return bairro;
+	}
+
+	public void setBairro(String bairro) {
+		this.bairro = bairro;
+	}
+
+	public String getLocalidade() {
+		return localidade;
+	}
+
+	public void setLocalidade(String localidade) {
+		this.localidade = localidade;
+	}
+
+	public String getUf() {
+		return uf;
+	}
+
+	public void setUf(String uf) {
+		this.uf = uf;
+	}
+
+	public String getIbge() {
+		return ibge;
+	}
+
+	public void setIbge(String ibge) {
+		this.ibge = ibge;
+	}
+
+	public String getGia() {
+		return gia;
+	}
+
+	public void setGia(String gia) {
+		this.gia = gia;
+	}
+
+	public String getDdd() {
+		return ddd;
+	}
+
+	public void setDdd(String ddd) {
+		this.ddd = ddd;
 	}
 
 	public List<Produto> getProdutoList() {
@@ -181,22 +280,6 @@ public class Fornecedor {
 
 	public void setProdutoList(List<Produto> produtoList) {
 		this.produtoList = produtoList;
-	}
-
-	public String getSituacao() {
-		return situacao;
-	}
-
-	public void setSituacao(String situacao) {
-		this.situacao = situacao;
-	}
-
-	public String getCnpj() {
-		return cnpj;
-	}
-
-	public void setCnpj(String cnpj) {
-		this.cnpj = cnpj;
 	}
 
 }

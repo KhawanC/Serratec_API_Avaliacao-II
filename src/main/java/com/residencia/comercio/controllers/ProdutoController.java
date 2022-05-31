@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.residencia.comercio.dtos.ProdutoDTO;
 import com.residencia.comercio.entities.Produto;
 import com.residencia.comercio.services.ProdutoService;
 
@@ -51,34 +52,33 @@ public class ProdutoController {
 	}
 
 	@PostMapping
-	@Operation(summary = "Salvar um fornecedor")
+	@Operation(summary = "Salvar um produto")
 	public ResponseEntity<Produto> save(@RequestBody Produto produto) {
-		return new ResponseEntity<>(produtoService.save(produto), HttpStatus.CREATED);
+		return new ResponseEntity<>(produtoService.saveProduto(produto), HttpStatus.CREATED);
 	}
 
 	@PutMapping
-	@Operation(summary = "Atualizar um fornecedor")
+	@Operation(summary = "Atualizar um produto")
 	public ResponseEntity<String> update(@RequestBody Produto produto) {
-		produtoService.update(produto);
+		produtoService.updateProduto(produto);
 		return new ResponseEntity<>("", HttpStatus.OK);
 	}
-
-	@PutMapping("/{id}")
-	@Operation(summary = "Atualizar um produtor com um ID específico")
-	public ResponseEntity<Produto> update(@PathVariable Integer id, @RequestBody Produto produto) {
-		Produto produtoAtualizado = produtoService.updateComId(produto, id);
-		if (null == produtoAtualizado) {
-			return new ResponseEntity<>(produtoAtualizado, HttpStatus.BAD_REQUEST);
-		} else {
-			return new ResponseEntity<>(produtoAtualizado, HttpStatus.OK);
-		}
-	}
-
 
 	@DeleteMapping("/{id}")
-	@Operation(summary = "Deletar uma categoria com um ID específico")
+	@Operation(summary = "Deletar um produto com um ID específico")
 	public ResponseEntity<String> deleteById(Integer id) {
-		produtoService.deleteById(id);
+		produtoService.deleteProdutoById(id);
 		return new ResponseEntity<>("", HttpStatus.OK);
+	}
+
+	// DTO
+
+	@PostMapping("/dto")
+	@Operation(summary = "salvar um produto no padrão DTO")
+	public ResponseEntity<Produto> saveProdutoDTO(@RequestBody ProdutoDTO produtoDTO) {
+		System.out.println("parte 1");
+		System.out.println(produtoDTO.toString());
+		Produto produto = produtoService.saveProdutoDTO(produtoDTO);
+		return new ResponseEntity<>(produto, HttpStatus.CREATED);
 	}
 }

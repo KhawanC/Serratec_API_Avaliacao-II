@@ -25,7 +25,7 @@ public class Produto {
 	private String sku;
 
 	@Column(name = "nome_produto")
-	private String nome_produto;
+	private String nomeProduto;
 
 	@ManyToOne
 	@JoinColumn(name = "id_fornecedor", referencedColumnName = "id_fornecedor")
@@ -35,12 +35,12 @@ public class Produto {
 	@JoinColumn(name = "id_categoria", referencedColumnName = "id_categoria")
 	private Categoria categoria;
 
-	public Integer getId() {
+	public Integer getIdProduto() {
 		return idProduto;
 	}
 
-	public void setId(Integer id) {
-		this.idProduto = id;
+	public void setIdProduto(Integer idProduto) {
+		this.idProduto = idProduto;
 	}
 
 	public String getSku() {
@@ -51,12 +51,12 @@ public class Produto {
 		this.sku = sku;
 	}
 
-	public String getNome_produto() {
-		return nome_produto;
+	public String getNomeProduto() {
+		return nomeProduto;
 	}
 
-	public void setNome_produto(String nome_produto) {
-		this.nome_produto = nome_produto;
+	public void setNomeProduto(String nomeProduto) {
+		this.nomeProduto = nomeProduto;
 	}
 
 	public Fornecedor getFornecedor() {

@@ -1,51 +1,61 @@
-# Serratec_API_Avaliacao-II
-
-# API Restful Fornecedor
-API REST utilizando Spring Boot e recursos como validação, consumo de api's externas, entre outros.
+# residencia-20221-api-fornecedor_produto
+API REST utilizando Spring Boot e recursos como validação, consumo de api´s externas, entre outros.
 
 ## Descrição
 
-Projeto simples de API REST utilizando o framework Spring.
+Projeto simples de API REST utilizando o framework Spring
 
 ## Script do banco de dados 
 
 ```bash
-CREATE TABLE public.fornecedor (
-  id_fornecedor serial4 NOT NULL,
-  cnpj varchar(18) NOT NULL,
-  tipo varchar(255) NULL,
-  razao_social varchar(255),
-  uf varchar(2) NULL,
-  telefone varchar(100) NULL,
-  email varchar(255) NULL,
-  nome_fantasia varchar(255),
-  status_situacao varchar(100) NULL,
-  bairro varchar(255) NULL,
-  logradouro varchar(255) NULL,
-  numero int8 NULL,
-  complemento varchar(100) NULL,
-  cep varchar(10) NULL,
-  municipio varchar(255),
-  data_abertura timestamp NULL,
-  PRIMARY KEY (id_fornecedor)
+select * from fornecedor;
+select * from produto;
+select * from categoria;
+
+
+
+create table categoria(
+id_categoria serial not null,
+nome_categoria varchar(50),
+primary key(id_categoria)
 );
 
-CREATE TABLE public.categoria (
-  id_categoria serial4 NOT NULL,
-  nome_categoria varchar(255),
-  imagem varchar(100),
-  PRIMARY KEY (id_categoria)
+create table fornecedor(
+id_fornecedor serial not null,
+cnpj varchar,
+situacao varchar,
+tipo varchar,
+nome varchar,
+porte varchar,
+abertura varchar,
+data_situacao varchar,
+motivo_situacao varchar,
+email varchar,
+telefone varchar,
+natureza_juridica varchar,
+ultima_atualizacao varchar,
+status varchar,
+fantasia varchar,
+cep varchar,
+logradouro varchar,
+bairro varchar,
+localidade varchar,
+uf varchar,
+ibge varchar,
+gia varchar,
+ddd varchar,
+primary key(id_fornecedor)
 );
 
-CREATE TABLE public.produto (
-  id_produto serial4 NOT NULL,
-  sku varchar(255),
-  nome_produto varchar(255),
-  id_fornecedor int8 NOT NULL,
-  id_categoria int8 NOT NULL,
-  PRIMARY KEY (id_produto),
-  FOREIGN KEY (id_fornecedor) REFERENCES public.fornecedor(id_fornecedor),
-  FOREIGN KEY (id_categoria) REFERENCES public.categoria(id_categoria)
+create table produto(
+id_produto serial not null,
+sku varchar,
+nome_produto varchar,
+id_fornecedor bigint,
+id_categoria int not null,
+primary key(id_produto),
+foreign key(id_fornecedor) references fornecedor(id_fornecedor),
+foreign key(id_categoria) references  categoria(id_categoria)
 );
 ```
 
@@ -63,8 +73,9 @@ CREATE TABLE public.produto (
 As credenciais para acesso ao banco de dados e o nome do contexto da API deverão ser alterados no arquivo application.properties
 
 ## Sobre
+
 - Author - [Alexandre Paixão]
-- Sub- Author - [Kauã Cassiano]
+- Author - [Kauã Cassiano]
 
 ## Licença
 
